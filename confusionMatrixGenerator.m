@@ -1,5 +1,8 @@
+#Code generates a confusion matrix to test accuracy of program
 function confusionMatrixGenerator
+    #Read in defined genre matrix
     genreMatrix = readmatrix('genreMatrix.txt');
+    #Set paths to directories containing files that you would like to test in definer
     BasePath = dir('C:\Users\wmears\Documents\MATLAB\Genre Classification\MIRToolbox\SixGenres\genres_original\classical');
     classicalArchives = {BasePath.name};
     BasePath = dir('C:\Users\wmears\Documents\MATLAB\Genre Classification\MIRToolbox\SixGenres\genres_original\blues');
@@ -20,7 +23,9 @@ function confusionMatrixGenerator
     reggaeArchives = {BasePath.name};
     BasePath = dir('C:\Users\wmears\Documents\MATLAB\Genre Classification\MIRToolbox\SixGenres\genres_original\rock');
     rockArchives = {BasePath.name};
+    #Initialize confusion matrix
     confusionMatrix = { 0 "rock" "pop" "classical" "metal" ; "rock" 0 0 0 0 ; "pop" 0 0 0 0 ; "classical" 0 0 0 0; "metal" 0 0 0 0};
+    #Iterate through each signal in each directory, take stats on signal, define signal, and add tally to index in confusion matrix corresponding to the expected genre and the calculated genre
     for j = 3 : 1 : 102
         signal = audioread(classicalArchives{j});
         inputRolloff = mirgetdata(mirrolloff(miraudio(signal),'frame'));

@@ -10,13 +10,11 @@
 %samples as opposed to 100, the average components were different, though similar enough to 
 %not have a noticeable difference on the outcome. Each group of sound files has the following 
 %musical surface features calculated: mean tonal centroid, std tonal centroid, mean rolloff, std 
-%rolloff, mean flux, std flux, mean zero crossing, std zero crossing, and low energy. I was 
-%unable to implement a discrete wavelet transform for rhythm features, as I would like to write 
-%my own and did not have enough time to do so. A lack of rhythm features caused some 
-%disappointing confusion between genres (classical and metal ), though every genre tested had 
-%a significantly higher classification accuracy than the statistically expected 25% (4 genres 
-%tested with 100 samples each). When calculating the rolloff features, some samples produced 
-%NaN, so those samples were disregarded. Sample components of zero were also 
+%rolloff, mean flux, std flux, mean zero crossing, std zero crossing, and low energy. A lack of 
+%rhythm features caused some disappointing confusion between genres (classical and metal ), though 
+%every genre tested had a significantly higher classification accuracy than the statistically 
+%expected 25% (4 genres tested with 100 samples each). When calculating the rolloff features, 
+%some samples produced NaN, so those samples were disregarded. Sample components of zero were also 
 %disregarded, as it would be highly unlikely for any of the calculated components to be exactly 
 %zero. The code constructs a matrix, with each row representing an array of musical surface 
 %features for their respective genres.  Each sample's surface features were averaged to find a 
@@ -33,7 +31,7 @@
 %sound files and runs each file through the classifier code (it is written out again in the 
 %confusion matrix code to make it easier to see what's being done, though classifier.m could 
 %just be used to shorten the length of confusionMatrixGenerator.m significantly. The confusion 
-%matrix contains the correct labels in cells {1,2}-{1,5}, and the code’s classification in cells 
+%matrix contains the correct labels in cells {1,2}-{1,5}, and the codeâ€™s classification in cells 
 %{2,1}-{5,1}. The diagonal contains the amount of correct classifications (if the code runs 
 %through exactly 100 files, it will also indicate the percentage). In using rock, pop, classical, and 
 %metal, the matrix contained respective classification accuracies of 34, 63, 43, and 84. Metal 
